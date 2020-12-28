@@ -29,20 +29,14 @@ def func(x, Hubble, Matter):
     return (299793/(Hubble*x*np.sqrt(np.fabs(1-Matter)))*np.sinh(2*(np.arctanh(np.sqrt(np.fabs(1-Matter)))-np.arctanh(np.sqrt(np.fabs(1-Matter))/np.sqrt((Matter/x)+np.fabs(1-Matter))))))
 
 popt, pcov = optimize.curve_fit(func, x, y, sigma=w, p0=[70, 0.5], bounds=([60,0.01],[80,0.99]))
+fitLabel = 'fit: Hubble=%5.3f, Matter=%5.3f' % (popt[0], popt[1])
 
-#plt.plot(X, Y, label='data')
+plt.figure()
+plt.plot(x, y, '+', label='data')
+xf = np.linspace(x.min(), x.max(), num=50)
+plt.plot(xf, func(xf, *popt), 'g--',
+         label=fitLabel)
 
-print(popt[0])
-print(popt[1])
-
-plt.plot(x, func(x, *popt), 'g--',
-         label='fit: Hubble=%5.3f, Matter=%5.3f, space=%5.3f')
-"""
-   plt.plot(x, func(x, *popt), 'g--',
-
-TypeError: func() missing 1 required positional argument: 'space'
-
-"""
 plt.xlabel('redshift')
 plt.ylabel('mag')
 plt.legend()
