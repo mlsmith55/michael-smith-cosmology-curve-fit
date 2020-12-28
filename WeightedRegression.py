@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#%%
 """
 Created on Mon Dec 21 14:22:19 2020
 
@@ -42,3 +43,4 @@ plt.ylabel('mag')
 plt.legend()
 plt.show()
 
+# %%
