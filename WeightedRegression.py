@@ -22,6 +22,9 @@ x = DF['ExpFact']
 y = DF['D_L']
 w = DF['Err_D_L']
 
+# Enforce non-zero error to avoid NaN in least squares resulting as product of inf and 0
+w.mask(w == 0, 1e-9)
+
 def func(x, Hubble, Matter):
     return (299793/(Hubble*x*np.sqrt(np.fabs(1-Matter)))*np.sinh(2*(np.arctanh(np.sqrt(np.fabs(1-Matter)))-np.arctanh(np.sqrt(np.fabs(1-Matter))/np.sqrt((Matter/x)+np.fabs(1-Matter))))))
 
