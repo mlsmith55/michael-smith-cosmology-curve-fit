@@ -29,7 +29,7 @@ def func(x, Hubble, Matter):
 
 popt = scipy.optimize.curve_fit(func, x, y,sigma = w)
 """
-   
+ValueError: operands could not be broadcast together with shapes (2,) (38,)    
 
 """
 print(popt[0])
