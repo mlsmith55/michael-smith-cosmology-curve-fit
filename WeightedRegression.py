@@ -33,7 +33,7 @@ popt, pcov = optimize.curve_fit(func, x, y, sigma=w, p0=[70, 0.5], bounds=([60,0
 fitLabel = 'fit: Hubble=%5.3f, Matter=%5.3f' % (popt[0], popt[1])
 
 plt.figure()
-plt.plot(x, y, '+', label='data')
+plt.errorbar(x, y, w, fmt='.', label='data')
 xf = np.linspace(x.min(), x.max(), num=50)
 plt.plot(xf, func(xf, *popt), 'g--',
          label=fitLabel)
