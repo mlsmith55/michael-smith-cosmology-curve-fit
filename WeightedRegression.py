@@ -10,7 +10,7 @@ Is there a simple way that allows me to provide a weighting function which produ
 #import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import scipy
+import scipy.optimize as optimize
 import numpy as np
 #from np import sqrt, sinh, arctanh, fabs 
 
