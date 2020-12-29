@@ -1,0 +1,1 @@
+Instead of deleting them, some files are instead moved to the "archive" folder where they are easier to discover/recover for people with little experience of Git and GitHub.
