@@ -16,7 +16,7 @@ from scipy.integrate import quad
 """
 Importing SNe Ia data from a csv file, below. The info command is run to double check that the correct file has been called.
 """
-DF=pd.read_csv(r'C:/Users/Mike/Desktop/MartinS/SNdata/Riess1998_mag_Data.csv')
+DF = pd.read_csv('data/Riess1998_mag_Data.csv')
 #Now check to make certain the proper file is being read
 DF.info()
 """
