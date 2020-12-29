@@ -6,13 +6,10 @@ Created on Mon Dec 28 17:28:35 2020
 @author: Mike
 """
 
-#import numpy as np
 import pandas as pd
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-import scipy
-#import scipy.integrate as integrate
 from scipy.integrate import quad
 
 """
