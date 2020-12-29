@@ -15,7 +15,7 @@ import scipy.optimize as optimize
 import numpy as np
 #from np import sqrt, sinh, arctanh, fabs 
 
-DF=pd.read_csv('Riess1998_DL_Data.csv')
+DF = pd.read_csv('data/Riess1998_DL_Data.csv')
 #Now check to make certain the proper file is being read
 DF.info()
 
