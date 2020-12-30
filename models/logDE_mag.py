@@ -25,7 +25,7 @@ def model(Z, Hubble, Matter):
 This second portion is the function to be integrated which is mag version of equation E5 of DOI: 10.5772/intechopen.91266. The next definition is the function needed for integration
 """
 def _portion2(Z, Matter):
-    return 1/(math.sqrt((1+Z)**2)*(1+Matter*Z) - 2*(2+Z)*math.fabs(1-Matter))
+    return 1/(np.sqrt((1+Z)**2)*(1+Matter*Z) - 2*(2+Z)*np.fabs(1-Matter))
 
 """
 This definition is the integration process, note the integration is from 0 to Z and not 1 to Z as per the equation E5.

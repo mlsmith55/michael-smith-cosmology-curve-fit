@@ -20,7 +20,7 @@ def model(x, Hubble, Matter):
 This _portion2 is the function to be integrated
 """  
 def _portion2(x, Matter):
-    return 1/(math.sqrt(((1+x)**2)*(1+Matter*x)))
+    return 1/(np.sqrt(((1+x)**2)*(1+Matter*x)))
 
 def _intersum(x, Matter):
     return quad(_portion2, 0, x, args=(Matter))[0]
@@ -28,13 +28,13 @@ _vectorizedIntersum = np.vectorize(_intersum, excluded=["Matter"])
 
 
 """
-This _portion3 is the sinh(sqrt(1-Matter)function of the _intersum above). Use of math.sinh seems OK with Python 3.
+This _portion3 is the sinh(sqrt(1-Matter)function of the _intersum above).
 """
 def _portion3(x, Matter):
-    return math.sinh(math.sqrt(math.fabs(1-Matter))*_vectorizedIntersum(x, Matter))
+    return np.sinh(np.sqrt(np.fabs(1-Matter))*_vectorizedIntersum(x, Matter))
 
 """
 This first portion of the function is a simple calculation
 """
 def _portion1(x, Hubble, Matter):
-    return ((speed_of_light*(1+x))/(Hubble*math.sqrt(math.fabs(1-Matter))))
+    return speed_of_light*(1+x)/(Hubble*np.sqrt(np.fabs(1-Matter)))
