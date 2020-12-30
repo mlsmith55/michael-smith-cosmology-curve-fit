@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#%%
 """
 Created on Sat Dec 12 15:31:02 2020
 
@@ -11,7 +12,7 @@ import pandas as pd
 """   
 Importing the redshift Z data, the mag, typically labeled m_B and the error, Error_m_B, associated with each mag value. m_B to be calculated becoming the expansion factor, the proper D_L distance and associated error, Err_D_L. This read command declares the first row a proper string which cannot be used for calculations.
 """
-df=pd.read_csv('C:/Users/Mike/Documents/Astrophysics/MartinStalberg/Supernovae_Data_csv/Riess1998_mag_Data.csv', header=0)
+df=pd.read_csv('data/Riess1998_mag_Data.csv', header=0)
 """
 Print information to check if the correct file has been imported. The first row, being strings, should not be numbered nor used as data, but the first row of numerical data should be numbered as zero. The table characteristics shall be printed first.
 """
@@ -64,7 +65,8 @@ print('Remember the row count begins at 0 with Python. Also, the values of colum
 """
 Now the completed file is saved in csv format
 """
-df.to_csv('DistanceExpFact37SNePlusEarth.csv')
+df.to_csv('data/test.csv')
 """
 The above name is only an example.
 """
+# %%
