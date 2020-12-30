@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import math
 from scipy.integrate import quad
+from settings import speed_of_light
 
 """
 The function below is the exact function decribing the FLRW model with two paramters, Hubble constant and matter density. Note this is a 2-parameter FIT OF FLAT SPACETIME WITH DARK ENERGY
@@ -37,4 +38,4 @@ _vectorizedIntersum = np.vectorize(_intersum, excluded=["Matter"])
 This is a simple calculation of the pre-integral portion of E5
 """
 def _portion1(Z, Hubble):
-    return 299792*(1+Z)/Hubble
+    return speed_of_light*(1+Z)/Hubble

@@ -6,6 +6,7 @@ Created on Mon Dec 28 17:28:35 2020
 """
 
 import numpy as np
+from settings import speed_of_light
 
 """
 The function below is the exact function decribing the FLRW model with the parameters, Hubble constant and matter density. Note this is a two parameter fit and presumes A CURVED UNIVERSE GEOMETRY WITHOUT DARK ENERGY should give very similar results to Vers5 but without integration.
@@ -27,4 +28,4 @@ def _portion3(x, Matter):
 This _portion1 of the function is a simple calculation
 """
 def _portion1(x, Hubble, Matter):
-    return ((299792*(1+x))/(Hubble*np.sqrt(np.fabs(1-Matter))))
+    return ((speed_of_light*(1+x))/(Hubble*np.sqrt(np.fabs(1-Matter))))

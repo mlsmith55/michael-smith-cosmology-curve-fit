@@ -1,3 +1,5 @@
+speed_of_light = 299792
+
 Hubble_initial = 70
 Hubble_min = 60
 Hubble_max = 80

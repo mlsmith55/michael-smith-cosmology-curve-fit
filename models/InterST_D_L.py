@@ -19,6 +19,7 @@ Importing SNe Ia data from a csv file, below. The info command is run to double 
 DF=pd.read_csv(r'C:/Users/Mike/Desktop/MartinS/SNdata/Riess1998_DL_Data.csv')
 #Now check to make certain the proper file is being read
 DF.info()
+from settings import speed_of_light
 
 x = DF['ExpFact']
 y = DF['D_L']
@@ -37,7 +38,7 @@ def intersum(x):
 This first portion is a simple calculation
 """
 def portion1(x, Hubble, Matter):
-    return ((299792/(x*Hubble *math.sqrt(math.fabs(1-Matter))))
+    return speed_of_light/(x*Hubble *math.sqrt(math.fabs(1-Matter))
 """
 putting the complete function together as the cmpltresult
 """
