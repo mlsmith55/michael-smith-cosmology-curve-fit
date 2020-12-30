@@ -16,6 +16,7 @@ import numpy as np
 from settings import curve_fit_parameter_settings
 from models.ST_D_L import ST_D_L
 from models.InterST_D_L import InterST_D_L
+from models.InterDE_D_L import InterDE_D_L
 
 DF = pd.read_csv('data/Riess1998_DL_Data.csv')
 #Now check to make certain the proper file is being read
@@ -28,7 +29,7 @@ ed = DF['Err_D_L']
 # Enforce non-zero error to avoid NaN in least squares resulting as product of inf and 0
 ed.mask(ed == 0, 1e-9, inplace=True)
 
-for model in [ST_D_L, InterST_D_L]:
+for model in [InterDE_D_L, ST_D_L, InterST_D_L]:
     popt, pcov = optimize.curve_fit(model, x, d, sigma=ed, **curve_fit_parameter_settings)
     fitLabel = 'fit: Hubble=%5.3f, Matter=%5.3f' % (popt[0], popt[1])
 
