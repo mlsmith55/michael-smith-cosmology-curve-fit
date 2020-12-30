@@ -14,7 +14,7 @@ from settings import speed_of_light
 The function below is the exact function decribing the FLRW model with the parameters, Hubble constant and matter density. Note this presumes A CURVED UNIVERSE GEOMETRY WITHOUT DARK ENERGY
 """
 def model(x, Hubble, Matter):
-    return 5*(np.log10((_portion1)*(_portion3)))+25
+    return 5*(np.log10((_portion1(x, Hubble, Matter))*(_portion3(x, Matter))))+25
 
 """
 This _portion2 is the function to be integrated
