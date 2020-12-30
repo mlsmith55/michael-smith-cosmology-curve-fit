@@ -13,7 +13,7 @@ from settings import speed_of_light
 The function below is the exact function decribing the FLRW model with two paramters, Hubble constant and matter density. Note this is a 2-parameter FIT OF FLAT SPACETIME WITH DARK ENERGY
 
 Z is the redshift astronomers wrongly use as the recession velocity.
-m_B is the "distance magnitude" from signals using a blue filter
+m_B is the "distance magnitude" calculated from signals using a blue filter
 Error_m_B is the standard deviation about m_B
 """
 def logDE_mag(Z, Hubble, Matter):
@@ -23,10 +23,10 @@ def logDE_mag(Z, Hubble, Matter):
 This second portion is the function to be integrated which is mag version of equation E5 of DOI: 10.5772/intechopen.91266. The next definition is the function needed for integration
 """
 def _portion2(Z, Matter):
-    return 1/(np.sqrt((1+Z)**2)*(1+Matter*Z) - 2*(2+Z)*np.fabs(1-Matter))
+    return 1/(np.sqrt((1+Z)**2)*(1+Matter*Z) - 2*(2+Z)*(1-Matter))
 
 """
-This definition is the integration process, note the integration is from 0 to Z and not 1 to Z as per the equation E5.
+This definition is the integration process, note the integration is from 0 to Z and not x to 1 as per the equation E5.
 """
 def _intersum(Z, Matter):
     return quad(_portion2, 0, Z, args=(Matter))[0]
