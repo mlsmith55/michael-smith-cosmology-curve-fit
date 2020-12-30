@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 import scipy.optimize as optimize
 import matplotlib.pyplot as plt
-from flat_spacetime_with_dark_energy import model
+from models.logDE_mag import model
 
 """
 Importing SNe Ia data from a csv file, below. The info command is run to double check that the correct file has been called.
