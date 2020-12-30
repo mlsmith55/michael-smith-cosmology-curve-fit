@@ -18,15 +18,15 @@ Error_m_B is the standard deviation about m_B
 """
 def logDE_mag(Z, Hubble, Matter):
     return 5*np.log10(_portion1(Z, Hubble) * _vectorizedIntersum(Z, Matter))+25
-
+#Suggestion - might lines 19 and 20 be placed after line 39 for proper calculation flow, since logDE_mag is the function to be used for regression?
 """
 This second portion is the function to be integrated which is mag version of equation E5 of DOI: 10.5772/intechopen.91266. The next definition is the function needed for integration
 """
 def _portion2(Z, Matter):
-    return 1/(np.sqrt((1+Z)**2)*(1+Matter*Z) - 2*(2+Z)*np.fabs(1-Matter))
+    return 1/(np.sqrt((1+Z)**2)*(1+Matter*Z) - 2*(2+Z)*(1-Matter))
 
 """
-This definition is the integration process, note the integration is from 0 to Z and not 1 to Z as per the equation E5.
+This definition is the integration process, note the integration is from 0 to Z and not x to 1 as per the equation E5.
 """
 def _intersum(Z, Matter):
     return quad(_portion2, 0, Z, args=(Matter))[0]
