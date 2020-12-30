@@ -23,7 +23,7 @@ def _portion2(x, Matter):
     return 1/(x*math.sqrt((Matter/x) + math.fabs(1-Matter)))
 
 def _intersum(x, Matter):
-    return quad(_portion2, x, 1, args=(Matter))
+    return quad(_portion2, x, 1, args=(Matter))[0]
 _vectorizedIntersum = np.vectorize(_intersum, excluded=["Matter"])
 
 """
