@@ -18,15 +18,15 @@ def InterDE_D_L(x, Hubble, Matter):
 _portion1 defines the pre-integral
 """
 def _portion1(x, Hubble):
-    return (299793*(1+x)/Hubble)
+    return (299793/Hubble*x)
 """
 _portion2 is the function to be integrated
 """      
 def _portion2(x,Matter):
-    return 1/(np.sqrt((((1+x)**2)*(1+Matter*x))-(x*(2+x)*(1-Matter))))
+    return 1/(x*np.sqrt((Matter/x)+(1-Matter)*x**2))
 """
 The _intersum is the integration routine 
 """
 def _intersum(x, Matter):
-    return quad(_portion2, 0, x, args=(Matter))[0]
+    return quad(_portion2, x, 1, args=(Matter))[0]
 _vectorizedIntersum = np.vectorize(_intersum, excluded=["Matter"])
