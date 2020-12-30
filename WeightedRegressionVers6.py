@@ -28,7 +28,23 @@ Z = DF['Z']
 m_B = DF['m_B']
 error_m_B = DF['Error_m_B']
 
-popt, pcov = optimize.curve_fit(model, Z, m_B, sigma=error_m_B, p0=[70, 0.5], bounds=([60,0.01],[80,0.99]))
+Hubble_initial = 70
+Hubble_bounds = [60, 80]
+
+Matter_initial = 0.5
+Matter_bounds = [0.01, 0.99]
+
+popt, pcov = optimize.curve_fit(
+    model,
+    Z,
+    m_B,
+    sigma=error_m_B,
+    p0=[Hubble_initial, Matter_initial],
+    bounds=(
+        [Hubble_bounds[0], Matter_bounds[0]],
+        [Hubble_bounds[1], Matter_bounds[1]]
+    )
+)
 fitLabel = 'fit: Hubble=%5.3f, Matter=%5.3f' % (popt[0], popt[1])
 
 plt.figure()
