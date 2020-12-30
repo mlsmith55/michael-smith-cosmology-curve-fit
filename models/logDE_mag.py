@@ -17,7 +17,7 @@ m_B is the "distance magnitude" from signals using a blue filter
 Error_m_B is the standard deviation about m_B
 """
 def logDE_mag(Z, Hubble, Matter):
-    return 5*np.log10(_portion1(Z, Hubble))*(_vectorizedIntersum(Z, Matter))+25
+    return 5*np.log10(_portion1(Z, Hubble) * _vectorizedIntersum(Z, Matter))+25
 
 """
 This second portion is the function to be integrated which is mag version of equation E5 of DOI: 10.5772/intechopen.91266. The next definition is the function needed for integration
