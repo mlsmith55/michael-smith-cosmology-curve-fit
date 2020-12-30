@@ -8,12 +8,10 @@ Created on Mon Dec 21 14:22:19 2020
 Is there a simple way that allows me to provide a weighting function which produces results?
 """
 
-#import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import scipy.optimize as optimize
 import numpy as np
-#from np import sqrt, sinh, arctanh, fabs 
 
 DF = pd.read_csv('data/Riess1998_DL_Data.csv')
 #Now check to make certain the proper file is being read
