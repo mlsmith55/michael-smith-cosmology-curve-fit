@@ -10,7 +10,9 @@ import pandas as pd
 import numpy as np
 import scipy.optimize as optimize
 import matplotlib.pyplot as plt
-from models.logDE_mag import model
+from models.logDE_mag import logDE_mag
+from models.logST_mag import logST_mag
+from models.logInterST_mag import logInterST_mag
 from settings import curve_fit_parameter_settings
 
 """
@@ -29,24 +31,25 @@ Z = DF['Z']
 m_B = DF['m_B']
 error_m_B = DF['Error_m_B']
 
-popt, pcov = optimize.curve_fit(
-    model,
-    Z,
-    m_B,
-    sigma=error_m_B,
-    **curve_fit_parameter_settings
-)
-fitLabel = 'fit: Hubble=%5.3f, Matter=%5.3f' % (popt[0], popt[1])
+for model in [logDE_mag, logST_mag, logInterST_mag]:
+    popt, pcov = optimize.curve_fit(
+        model,
+        Z,
+        m_B,
+        sigma=error_m_B,
+        **curve_fit_parameter_settings
+    )
 
-plt.figure()
-plt.errorbar(Z, m_B, error_m_B, fmt='.', label='data', capsize=5)
-Zf = np.linspace(Z.min(), Z.max(), num=50)
-plt.plot(Zf, model(Zf, *popt), 'g--',
-         label=fitLabel)
+    plt.figure()
+    plt.errorbar(Z, m_B, error_m_B, fmt='.', label='data', capsize=5)
+    Zf = np.linspace(Z.min(), Z.max(), num=50)
+    plt.plot(Zf, model(Zf, *popt), 'g--',
+            label='model')
 
-plt.xlabel('redshift')
-plt.ylabel('mag')
-plt.legend()
-plt.show()
+    plt.title('Model: %s. Hubble=%5.3f, Matter=%5.3f' % (model.__name__, popt[0], popt[1]))
+    plt.xlabel('redshift')
+    plt.ylabel('mag')
+    plt.legend()
+    plt.show()
 
 # %%

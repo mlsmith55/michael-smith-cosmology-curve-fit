@@ -5,9 +5,7 @@ Created on Mon Dec 28 17:28:35 2020
 @author: Mike
 """
 
-import pandas as pd
 import numpy as np
-import math
 from scipy.integrate import quad
 from settings import speed_of_light
 
@@ -18,7 +16,7 @@ Z is the redshift astronomers wrongly use as the recession velocity.
 m_B is the "distance magnitude" from signals using a blue filter
 Error_m_B is the standard deviation about m_B
 """
-def model(Z, Hubble, Matter):
+def logDE_mag(Z, Hubble, Matter):
     return 5*np.log10(_portion1(Z, Hubble))*(_vectorizedIntersum(Z, Matter))+25
 
 """

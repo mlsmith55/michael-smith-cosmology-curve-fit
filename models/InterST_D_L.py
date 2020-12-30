@@ -12,7 +12,7 @@ from settings import speed_of_light
 """
 The function below is the exact function decribing the FLRW model with two parameters, Hubble constant and matter density. Note this is a 2-parameter FIT OF CURVED SPACETIME WITHOUT DARK ENERGY
 """
-def model(x, Hubble, Matter):
+def InterST_D_L(x, Hubble, Matter):
     return (_portion1(x, Hubble, Matter))*np.sinh(np.sqrt(np.fabs(1-Matter))*(_vectorizedIntersum(x, Matter)))
 
 """
