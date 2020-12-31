@@ -44,9 +44,9 @@ for model in [logDE_mag, logST_mag, logInterST_mag]:
     plt.errorbar(Z, m_B, error_m_B, fmt='.', label='data', capsize=5)
     Zf = np.linspace(Z.min(), Z.max(), num=50)
     plt.plot(Zf, model(Zf, *popt), 'g--',
-            label='model')
+            label='fit: Hubble=%5.3f, Matter=%5.3f' % (popt[0], popt[1]))
 
-    plt.title('Model: %s. Hubble=%5.3f, Matter=%5.3f' % (model.__name__, popt[0], popt[1]))
+    plt.title('Model: %s' % (model.__name__))
     plt.xlabel('redshift')
     plt.ylabel('mag')
     plt.legend()

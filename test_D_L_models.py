@@ -31,15 +31,14 @@ ed.mask(ed == 0, 1e-9, inplace=True)
 
 for model in [InterDE_D_L, ST_D_L, InterST_D_L]:
     popt, pcov = optimize.curve_fit(model, x, d, sigma=ed, **curve_fit_parameter_settings)
-    fitLabel = 'fit: Hubble=%5.3f, Matter=%5.3f' % (popt[0], popt[1])
 
     plt.figure()
     plt.errorbar(x, d, ed, fmt='.', label='data', capsize=5)
     xf = np.linspace(x.min(), x.max(), num=50)
     plt.plot(xf, model(xf, *popt), 'g--',
-            label=fitLabel)
+            label='fit: Hubble=%5.3f, Matter=%5.3f' % (popt[0], popt[1]))
 
-    plt.title('Model: %s. Hubble=%5.3f, Matter=%5.3f' % (model.__name__, popt[0], popt[1]))
+    plt.title('Model: %s' % (model.__name__))
     plt.xlabel('Expansion factor')
     plt.ylabel('D_L')
     plt.legend()
