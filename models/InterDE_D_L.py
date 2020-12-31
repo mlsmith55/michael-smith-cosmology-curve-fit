@@ -20,6 +20,7 @@ _portion1 defines the pre-integral
 """
 def _portion1(x, Hubble):
     return speed_of_light/(Hubble*x)
+
 """
 _portion2 is the function to be integrated
 """

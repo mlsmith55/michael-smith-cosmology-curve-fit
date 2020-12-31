@@ -14,7 +14,7 @@ from settings import speed_of_light
 The function below is the exact function decribing the FLRW model with the parameters, Hubble constant and matter density. Note this presumes A CURVED UNIVERSE GEOMETRY WITHOUT DARK ENERGY
 """
 def logInterST_mag(x, Hubble, Matter):
-    return 5*(np.log10((_portion1(x, Hubble, Matter))*(_portion3(x, Matter))))+25
+    return 5*np.log10(_portion1(x, Hubble, Matter)*_portion3(x, Matter))+25
 
 """
 This _portion2 is the function to be integrated
@@ -25,7 +25,6 @@ def _portion2(x, Matter):
 def _intersum(x, Matter):
     return quad(_portion2, 0, x, args=(Matter))[0]
 _vectorizedIntersum = np.vectorize(_intersum, excluded=["Matter"])
-
 
 """
 This _portion3 is the sinh(sqrt(1-Matter)function of the _intersum above).
